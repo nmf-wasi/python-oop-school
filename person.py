@@ -50,3 +50,4 @@ class Student(Person):
         else:
             gpa = sum / len(self.subject_Grade)
         self.grade = School.value_to_grade(gpa)
+        return f"{self.name} Final Grade: {self.grade} with GPA={gpa}\n"

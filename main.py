@@ -56,4 +56,6 @@ ten.add_subject(intro_to_dataScience)
 
 
 eight.take_semester_final_exam()
+nine.take_semester_final_exam()
+ten.take_semester_final_exam()
 print(school)

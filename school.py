@@ -84,7 +84,7 @@ class School:
             for student in val.students:
                 for k, i in student.marks.items():
                     result += f"{student.name} {k} {i} {student.subject_Grade[k]}\n"
-                result += f"{student.name} Final Grade: {student.calculate_final_grade()}\n"
+                result += f"{student.calculate_final_grade()}\n"
 
         return result
 
