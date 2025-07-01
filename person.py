@@ -36,7 +36,7 @@ class Student(Person):
     def set_id(self,value):
         self.__id=value
 
-    def final_grade(self):
+    def calculate_final_grade(self):
         sum = 0
 
         for grade in self.subject_Grade.values():
