@@ -7,7 +7,6 @@ class Classroom:
         self.students.append(student)
         roll_no=f"{self.name}-{len(self.students)+1}" #8-1, 8-2
         student.id=roll_no
-        self.students.append(student)
 
     def add_subject(self, subject):
         self.subjects.append(subject)

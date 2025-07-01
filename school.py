@@ -11,7 +11,8 @@ class School:
     def add_teacher(self, subject, teacher):
         self.teachers[subject]=teacher    
     def student_admission(self,student):
-        pass
+        classname=student.classroom.name
+        self.classrooms[classname].add_student(student)
 
     @staticmethod #->class's own method, object or instances cant use this func/method
     def calculate_grade(marks):
@@ -38,7 +39,7 @@ class School:
     def grade_to_value(grade):
         grade_map={
             "A+":4.5,
-            "A+":4.0,
+            "A":4.0,
             "B+":3.5,
             "B":3.0,
             "C+":2.5,
@@ -61,11 +62,31 @@ class School:
         else: return "F"
     
     def __repr__(self):
-        #all clasrooms
-        #all students
-        #all subject
-        #all teachers
-        #all student results
-        pass
+        result = ''
 
-    
+        for key in self.classrooms.keys():
+            result += f"{key}\n"
+
+        result += "All Students\n"
+        for key, val in self.classrooms.items():
+            result += f"---{key.upper()} Classroom Students\n"
+            for student in val.students:
+                result += f"{student.name}\n"
+
+        result += "\nAll Subjects\n"
+        for key, val in self.classrooms.items():
+            result += f"---{key.upper()} Classroom Subjects\n"
+            for sub in val.subjects:
+                result += f"{sub.name}\n"
+
+        result += "\nStudents Result\n"
+        for key, val in self.classrooms.items():
+            for student in val.students:
+                for k, i in student.marks.items():
+                    result += f"{student.name} {k} {i} {student.subject_Grade[k]}\n"
+                result += f"{student.name} Final Grade: {student.calculate_final_grade()}\n"
+
+        return result
+
+            
+        

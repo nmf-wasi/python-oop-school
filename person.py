@@ -19,22 +19,24 @@ class Teacher(Person):
 
 
 class Student(Person):
-    def __init__(self,name,classroom,id,marks,):
+    def __init__(self, name, classroom):
         super().__init__(name)
         self.name = name
-        self.classroom = classroom
-        self.__id == None
+        self.classroom = classroom  # classroom object
+        self.__id = None
         self.marks = {}  # {"eng": 78, "ICT":97}
         self.subject_Grade = {}  # {"eng":"A"}
         self.grade = None  # final grade
 
-    #getter
+    # getter
     @property
     def id(self):
         return self.__id
-    #setter
-    def set_id(self,value):
-        self.__id=value
+
+    # setter
+    @id.setter
+    def id(self, value):
+        self.__id = value
 
     def calculate_final_grade(self):
         sum = 0
@@ -42,5 +44,9 @@ class Student(Person):
         for grade in self.subject_Grade.values():
             point = School.grade_to_value(grade)
             sum += point
-        gpa = sum / len(self.subject_Grade)
+        if sum == 0:
+            gpa = 0.00
+            self.grade='F'
+        else:
+            gpa = sum / len(self.subject_Grade)
         self.grade = School.value_to_grade(gpa)
